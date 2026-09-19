@@ -33,6 +33,8 @@ jobs:
           validate-wrappers: false
 
       - name: Install Android SDK components
+        env:
+          JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
         run: |
           SDKMANAGER=$(command -v sdkmanager || find "$ANDROID_SDK_ROOT" -name sdkmanager 2>/dev/null | head -1)
           yes | "$SDKMANAGER" --licenses > /dev/null 2>&1 || true
